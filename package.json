@@ -23,7 +23,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint .",
-    "validate": "npm run lint"
+    "validate": "npm run lint",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
