@@ -25,7 +25,8 @@
     "lint": "eslint .",
     "validate": "npm run lint",
     "prepare": "husky install",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx|html)\""
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx|html)\"",
+    "check-format": "prettier --ignore-path .gitignore --list-different \"**/*.+(js|json|ts|tsx|html)\""
   },
   "eslintConfig": {
     "extends": [
