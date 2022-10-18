@@ -24,7 +24,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "validate": "npm run lint",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx|html)\""
   },
   "eslintConfig": {
     "extends": [
