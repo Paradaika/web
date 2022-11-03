@@ -1,15 +1,15 @@
 import { useCallback, useEffect, useState } from 'react';
 
+import { subtract } from 'domain/operations/subtract';
+
 const INITIAL_VALUE = 25;
 
 export const useCount = () => {
   const [count, setCount] = useState(INITIAL_VALUE);
   const [isPaused, setIsPaused] = useState(true);
 
-  const countDown = () => {
-    setCount(prevNumber => {
-      return prevNumber - 1;
-    });
+  const countdown = () => {
+    setCount(subtract);
   };
 
   const playHandler = () => {
@@ -29,7 +29,7 @@ export const useCount = () => {
   };
 
   const countDownHandler = useCallback(() => {
-    if (count! > 0 && !isPaused) countDown();
+    if (count! > 0 && !isPaused) countdown();
   }, [count, isPaused]);
 
   useEffect(() => {
