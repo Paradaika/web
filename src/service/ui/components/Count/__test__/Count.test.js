@@ -15,4 +15,14 @@ describe('Count', () => {
 
     expect(playButton).toBeInTheDocument();
   });
+
+  it('should be a reset button', () => {
+    render(<Count />);
+
+    const resetButton = screen.getByRole('button', {
+      name: /reset/i
+    });
+
+    expect(resetButton).toBeInTheDocument();
+  });
 });
