@@ -41,4 +41,19 @@ describe('Count', () => {
 
     expect(resetButton).toBeInTheDocument();
   });
+
+  it('should decrement by one after click play and wait one second', async () => {
+    render(<Count />);
+
+    const count = screen.getByLabelText('count');
+    const initialCount = count.textContent;
+    const playButton = screen.getByRole('button', {
+      name: /play/i
+    });
+
+    userEvent.click(playButton);
+    await new Promise(r => setTimeout(r, 2000));
+
+    expect(+count.textContent).toBe(initialCount - 1);
+  });
 });

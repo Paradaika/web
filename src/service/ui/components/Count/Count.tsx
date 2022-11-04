@@ -5,9 +5,21 @@ export const Count = () => {
 
   return (
     <div>
-      <p>{count}</p>
-      {isPaused ? <button onClick={playHandler}>Play</button> : <button onClick={pauseHandler}>Pause</button>}
-      <button onClick={resetHandler}>Reset</button>
+      <p aria-label="count" className="count">
+        {count}
+      </p>
+      {isPaused ? (
+        <button name="play" onClick={playHandler}>
+          Play
+        </button>
+      ) : (
+        <button name="pause" onClick={pauseHandler}>
+          Pause
+        </button>
+      )}
+      <button name="reset" onClick={resetHandler}>
+        Reset
+      </button>
     </div>
   );
 };
