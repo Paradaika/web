@@ -2,10 +2,10 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { subtract } from 'domain/operations/subtract';
 
-const INITIAL_VALUE = 25;
+import { INITIAL_VALUE_25 } from 'domain/initialValues/initialValues';
 
 export const useCount = () => {
-  const [count, setCount] = useState(INITIAL_VALUE);
+  const [count, setCount] = useState(INITIAL_VALUE_25);
   const [isPaused, setIsPaused] = useState(true);
 
   const countdown = () => {
@@ -21,7 +21,7 @@ export const useCount = () => {
   };
 
   const reset = () => {
-    setCount(INITIAL_VALUE);
+    setCount(INITIAL_VALUE_25);
   };
 
   const resetHandler = () => {
