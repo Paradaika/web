@@ -56,4 +56,32 @@ describe('Count', () => {
 
     expect(+count.textContent).toBe(initialCount - 1);
   });
+
+  it('should reset to initial value on reset', async () => {
+    render(<Count />);
+
+    const count = screen.getByLabelText('count');
+    const initialCount = count.textContent;
+    const playButton = screen.getByRole('button', {
+      name: /play/i
+    });
+
+    userEvent.click(playButton);
+    await new Promise(r => setTimeout(r, 2000));
+
+    expect(+count.textContent).toBe(initialCount - 1);
+
+    const pauseButton = screen.getByRole('button', {
+      name: /pause/i
+    });
+
+    userEvent.click(pauseButton);
+
+    const resetButton = screen.getByRole('button', {
+      name: /reset/i
+    });
+
+    userEvent.click(resetButton);
+    expect(count.textContent).toBe(initialCount);
+  });
 });
