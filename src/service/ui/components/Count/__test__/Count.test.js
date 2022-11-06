@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Count } from '../Count';
 
@@ -51,7 +51,10 @@ describe('Count', () => {
       name: /play/i
     });
 
-    userEvent.click(playButton);
+    act(() => {
+      userEvent.click(playButton);
+    });
+
     await new Promise(r => setTimeout(r, 2000));
 
     expect(+count.textContent).toBe(initialCount - 1);
@@ -66,7 +69,10 @@ describe('Count', () => {
       name: /play/i
     });
 
-    userEvent.click(playButton);
+    act(() => {
+      userEvent.click(playButton);
+    });
+
     await new Promise(r => setTimeout(r, 2000));
 
     expect(+count.textContent).toBe(initialCount - 1);
@@ -75,13 +81,17 @@ describe('Count', () => {
       name: /pause/i
     });
 
-    userEvent.click(pauseButton);
+    act(() => {
+      userEvent.click(pauseButton);
+    });
 
     const resetButton = screen.getByRole('button', {
       name: /reset/i
     });
 
-    userEvent.click(resetButton);
+    act(() => {
+      userEvent.click(resetButton);
+    });
     expect(count.textContent).toBe(initialCount);
   });
 });
