@@ -17,7 +17,7 @@ export class Time {
    * getSeconds
    */
   public getSeconds() {
-    const rawSeconds = this.rawSeconds % 60;
+    const rawSeconds = (this.rawSeconds % 60).toFixed(0);
     return rawSeconds.toString();
   }
 }
