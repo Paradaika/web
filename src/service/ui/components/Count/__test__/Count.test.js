@@ -57,23 +57,24 @@ describe('Count', () => {
 
     expect(seconds).toBeInTheDocument('');
   });
-  // it('should decrement by one after click play and wait one second', async () => {
-  //   render(<Count />);
 
-  //   const count = screen.getByLabelText('count');
-  //   const initialCount = count.textContent;
-  //   const playButton = screen.getByRole('button', {
-  //     name: /play/i
-  //   });
+  it('should decrement by one after click play and wait one second', async () => {
+    render(<Count />);
 
-  //   act(() => {
-  //     userEvent.click(playButton);
-  //   });
+    const seconds = screen.getByLabelText('seconds');
 
-  //   await new Promise(r => setTimeout(r, 2000));
+    const playButton = screen.getByRole('button', {
+      name: /play/i
+    });
 
-  //   expect(+count.textContent).toBe(initialCount);
-  // });
+    act(() => {
+      userEvent.click(playButton);
+    });
+
+    await new Promise(r => setTimeout(r, 1000));
+
+    expect(seconds).toHaveTextContent(59);
+  });
 
   // it('should reset to initial value on reset', async () => {
   //   render(<Count />);
