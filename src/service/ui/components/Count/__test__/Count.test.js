@@ -42,6 +42,14 @@ describe('Count', () => {
     expect(resetButton).toBeInTheDocument();
   });
 
+  it('should show minutes', () => {
+    render(<Count />);
+
+    const minutes = screen.getByLabelText('minutes');
+
+    expect(minutes).toBeInTheDocument();
+  });
+
   // it('should decrement by one after click play and wait one second', async () => {
   //   render(<Count />);
 
