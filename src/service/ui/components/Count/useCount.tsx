@@ -33,7 +33,7 @@ export const useCount = () => {
   }, [count, isPaused]);
 
   useEffect(() => {
-    setTimeout(() => countDownHandler(), 1000);
+    setTimeout(() => countDownHandler(), 10);
   }, [count, countDownHandler]);
   return { pauseHandler, resetHandler, playHandler, count, isPaused };
 };
