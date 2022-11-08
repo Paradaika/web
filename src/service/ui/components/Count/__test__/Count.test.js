@@ -76,38 +76,44 @@ describe('Count', () => {
     expect(seconds).toHaveTextContent(59);
   });
 
-  // it('should reset to initial value on reset', async () => {
-  //   render(<Count />);
+  it('should reset to initial value on reset', async () => {
+    render(<Count />);
 
-  //   const count = screen.getByLabelText('count');
-  //   const initialCount = count.textContent;
-  //   const playButton = screen.getByRole('button', {
-  //     name: /play/i
-  //   });
+    const seconds = screen.getByLabelText('seconds');
+    const minutes = screen.getByLabelText('minutes');
 
-  //   act(() => {
-  //     userEvent.click(playButton);
-  //   });
+    const initialSeconds = seconds.textContent;
+    const initialMinutes = minutes.textContent;
 
-  //   await new Promise(r => setTimeout(r, 2000));
+    const playButton = screen.getByRole('button', {
+      name: /play/i
+    });
 
-  //   expect(+count.textContent).toBe(initialCount - 1);
+    act(() => {
+      userEvent.click(playButton);
+    });
 
-  //   const pauseButton = screen.getByRole('button', {
-  //     name: /pause/i
-  //   });
+    await new Promise(r => setTimeout(r, 1000));
 
-  //   act(() => {
-  //     userEvent.click(pauseButton);
-  //   });
+    expect(seconds).toHaveTextContent(59);
+    expect(minutes).toHaveTextContent(initialMinutes - 1);
 
-  //   const resetButton = screen.getByRole('button', {
-  //     name: /reset/i
-  //   });
+    const pauseButton = screen.getByRole('button', {
+      name: /pause/i
+    });
 
-  //   act(() => {
-  //     userEvent.click(resetButton);
-  //   });
-  //   expect(count.textContent).toBe(initialCount);
-  // });
+    act(() => {
+      userEvent.click(pauseButton);
+    });
+
+    const resetButton = screen.getByRole('button', {
+      name: /reset/i
+    });
+
+    act(() => {
+      userEvent.click(resetButton);
+    });
+    expect(seconds).toHaveTextContent(initialSeconds);
+    expect(minutes).toHaveTextContent(initialMinutes);
+  });
 });
