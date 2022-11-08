@@ -7,8 +7,12 @@ export const Count = () => {
   return (
     <div>
       <div aria-label="count" className="count">
-        <p className="minutes">{time.getMinutes()}</p>
-        <p className="seconds">{time.getSeconds()}</p>
+        <p aria-label="minutes" className="minutes">
+          {time.getMinutes()}
+        </p>
+        <p aria-label="seconds" className="seconds">
+          {time.getSeconds()}
+        </p>
       </div>
       {isPaused ? (
         <button name="play" onClick={playHandler}>

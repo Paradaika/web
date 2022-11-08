@@ -50,6 +50,13 @@ describe('Count', () => {
     expect(minutes).toBeInTheDocument();
   });
 
+  it('should show seconds', () => {
+    render(<Count />);
+
+    const seconds = screen.getByLabelText('seconds');
+
+    expect(seconds).toBeInTheDocument('');
+  });
   // it('should decrement by one after click play and wait one second', async () => {
   //   render(<Count />);
 
