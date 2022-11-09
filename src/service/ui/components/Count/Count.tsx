@@ -1,19 +1,17 @@
-import { Time } from 'domain/Time/Time';
+import { Timer } from './Timer/Timer';
+
 import { useCount } from './useCount';
 
+import { Time } from 'domain/Time/Time';
+
 export const Count = () => {
-  const { pauseHandler, playHandler, resetHandler, count, isPaused } = useCount();
+  const { pauseHandler, playHandler, resetHandler, isPaused, count } = useCount();
+
   const time = new Time(count / 100);
+
   return (
     <div>
-      <div aria-label="count" className="count">
-        <p aria-label="minutes" className="minutes">
-          {time.getMinutes()}
-        </p>
-        <p aria-label="seconds" className="seconds">
-          {time.getSeconds()}
-        </p>
-      </div>
+      <Timer time={time} />
       {isPaused ? (
         <button name="play" onClick={playHandler}>
           Play
