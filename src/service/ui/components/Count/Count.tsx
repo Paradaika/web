@@ -4,26 +4,31 @@ import { useCount } from './useCount';
 
 import { Time } from 'domain/Time/Time';
 
+import { Styles as ButtonStyles } from '../Button/Button.styles';
+import { Styles as CountStyles } from './Count.styles';
+
 export const Count = () => {
   const { pauseHandler, playHandler, resetHandler, isPaused, count } = useCount();
 
   const time = new Time(count / 100);
 
   return (
-    <div>
+    <CountStyles.StyledCount>
       <Timer time={time} />
-      {isPaused ? (
-        <button name="play" onClick={playHandler}>
-          Play
-        </button>
-      ) : (
-        <button name="pause" onClick={pauseHandler}>
-          Pause
-        </button>
-      )}
-      <button name="reset" onClick={resetHandler}>
-        Reset
-      </button>
-    </div>
+      <div>
+        {isPaused ? (
+          <ButtonStyles.StyledButton name="play" onClick={playHandler} style={{ color: '#50D774' }}>
+            Play
+          </ButtonStyles.StyledButton>
+        ) : (
+          <ButtonStyles.StyledButton name="pause" onClick={pauseHandler} style={{ color: '#ff262a' }}>
+            Pause
+          </ButtonStyles.StyledButton>
+        )}
+        <ButtonStyles.StyledButton disabled={!isPaused} name="reset" onClick={resetHandler}>
+          Reset
+        </ButtonStyles.StyledButton>
+      </div>
+    </CountStyles.StyledCount>
   );
 };
