@@ -8,12 +8,12 @@ import { Styles as ButtonStyles } from '../Button/Button.styles';
 import { Styles as CountStyles } from './Count.styles';
 
 export const Count = () => {
-  const { pauseHandler, playHandler, resetHandler, isPaused, count } = useCount();
+  const { pauseHandler, playHandler, resetHandler, isPaused, count, fixedProgressPercentage } = useCount();
 
   const time = new Time(count / 100);
 
   return (
-    <CountStyles.StyledCount>
+    <CountStyles.StyledCount counterPercentage={fixedProgressPercentage + '%'}>
       <Timer time={time} />
       <div>
         {isPaused ? (
