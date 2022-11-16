@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 
-const StyledButton = styled('button')`
+import { ITheme } from 'domain/styles/themes';
+
+interface Props {
+  theme: ITheme;
+  typeOfButton?: 'success' | 'alert' | 'disabled';
+}
+
+const StyledButton = styled('button')<Props>`
   background-color: transparent;
-  color: #ff9900;
+  color: ${props => (props.typeOfButton === 'success' ? props.theme.success : props => props.theme.main)};
   font-family: 'Roboto Mono', monospace;
   padding: 0.5rem;
   margin: 0.5rem;
