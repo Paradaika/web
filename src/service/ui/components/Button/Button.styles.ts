@@ -4,12 +4,11 @@ import { ITheme } from 'domain/styles/themes';
 
 interface Props {
   theme: ITheme;
-  typeOfButton?: 'success' | 'alert' | 'disabled';
 }
 
 const StyledButton = styled('button')<Props>`
   background-color: transparent;
-  color: ${props => (props.typeOfButton === 'success' ? props.theme.success : props => props.theme.main)};
+  color: ${props => props.theme.main};
   font-family: 'Roboto Mono', monospace;
   padding: 0.5rem;
   margin: 0.5rem;
@@ -30,9 +29,14 @@ const StyledButton = styled('button')<Props>`
     /* transform: scale(1.05);
     transition: transform 0.3s linear; */
   }
-  .red {
-    color: #ff262a;
-  }
 `;
 
-export const Styles = { StyledButton };
+const StyledButtonSuccess = styled(StyledButton)`
+  color: ${props => props.theme.success};
+`;
+
+const StyledButtonError = styled(StyledButton)`
+  color: ${props => props.theme.error};
+`;
+
+export const Styles = { StyledButton, StyledButtonSuccess, StyledButtonError };
