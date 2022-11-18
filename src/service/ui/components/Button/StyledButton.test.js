@@ -17,4 +17,17 @@ describe('Styled buttons', () => {
 
     expect(button).toHaveStyle(`color: ${themes.defaultTheme.main}`);
   });
+
+  it('should render a grey button on disabled', () => {
+    const BUTTON_TEXT = 'My Button';
+    render(
+      <Styles.StyledButton disabled theme={themes.defaultTheme}>
+        {BUTTON_TEXT}
+      </Styles.StyledButton>
+    );
+
+    const disabledButton = screen.getByRole('button');
+
+    expect(disabledButton).toHaveStyle(`color: ${themes.defaultTheme.grey}`);
+  });
 });
