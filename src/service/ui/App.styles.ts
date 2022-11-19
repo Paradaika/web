@@ -35,6 +35,10 @@ body{
 h1 {
   font-weight: 300;
 }
+
+h2{
+  font-weight: 300;
+}
 `;
 const StyledApp = styled('div')`
   flex: 1;
