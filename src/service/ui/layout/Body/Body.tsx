@@ -1,4 +1,5 @@
 import Count from 'service/ui/components/Count';
+import TodoListComponent from 'service/ui/components/TodoListComponent';
 
 import { BodyStyles } from './Body.styles';
 
@@ -9,7 +10,7 @@ export const Body = () => {
       <BodyStyles.StyledCountContainer>
         <Count />
       </BodyStyles.StyledCountContainer>
-      <div className="todoList">Todo List</div>
+      <TodoListComponent />
     </BodyStyles.StyledBody>
   );
 };
