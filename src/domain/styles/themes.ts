@@ -7,6 +7,7 @@ export interface ITheme {
   grey: string;
   fontFamily: string;
   glassBackgroundColor: string;
+  glassBackgroundColorDark: string;
   glassBorderColor: string;
 }
 
@@ -18,8 +19,9 @@ const defaultTheme: ITheme = {
   error: '#FF262A',
   grey: '#6A676C',
   fontFamily: 'Roboto Mono, monospace',
-  glassBackgroundColor: 'rgba(255, 255, 255, 0.8)',
-  glassBorderColor: 'rgba(255, 255, 255, 0.18)'
+  glassBackgroundColor: 'rgba(255, 255, 255, 0.1)',
+  glassBackgroundColorDark: 'rgba(0, 0, 0, 0.2)',
+  glassBorderColor: 'rgba(255, 255, 255, 0.15)'
 };
 
 export const themes = { defaultTheme };
