@@ -12,7 +12,7 @@ export interface ITheme {
 }
 
 const defaultTheme: ITheme = {
-  background: '#2b272f',
+  background: 'rgb(28,28,28)',
   main: '#ff9900',
   secondary: '#63B2FF',
   success: '#50D774',
