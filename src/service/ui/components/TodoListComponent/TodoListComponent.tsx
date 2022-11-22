@@ -4,6 +4,7 @@ import TodoInput from 'service/ui/components/TodoListComponent/TodoInput';
 
 import { TodoListComponentStyles } from './TodoListComponent.styles';
 import { useState } from 'react';
+import TaskItem from './TaskItem';
 
 export interface ITask {
   id: string;
@@ -22,7 +23,7 @@ export const TodoListComponent = () => {
         <TodoListComponentStyles.TodoListHeader>Todo List</TodoListComponentStyles.TodoListHeader>
         <TodoInput onAdd={appendTask} />
         {todoList.map(task => {
-          return <p key={task.id}>{task.task}</p>;
+          return <TaskItem id={task.id} isDone={task.isDone} key={task.id} task={task.task} />;
         })}
       </TodoListComponentStyles.TodoListComponentContainer>
     </ThemeProvider>
