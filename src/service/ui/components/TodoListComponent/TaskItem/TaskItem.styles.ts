@@ -18,7 +18,14 @@ const StyledCheckBox = styled('span')`
   &.done {
     background-color: ${props => props.theme.main};
     border-color: ${props => props.theme.background};
+    text-decoration: line-through;
   }
 `;
 
-export const StylesTasksItem = { StyledTaskItem, StyledCheckBox };
+const StyledParagraph = styled('p')`
+  &.done {
+    text-decoration: line-through;
+  }
+`;
+
+export const StylesTasksItem = { StyledTaskItem, StyledCheckBox, StyledParagraph };
