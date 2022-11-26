@@ -17,13 +17,18 @@ describe('Count', () => {
     expect(playButton).toBeInTheDocument();
   });
 
-  it('should show pause button on play', async () => {
-    render(<Count />);
+  it('should show pause button on plays', async () => {
+    act(() => {
+      render(<Count />);
+    });
 
     const playButton = screen.getByRole('button', {
       name: /play/i
     });
-    userEvent.click(playButton);
+
+    act(() => {
+      userEvent.click(playButton);
+    });
 
     const pauseButton = screen.getByRole('button', {
       name: /pause/i
@@ -59,41 +64,47 @@ describe('Count', () => {
   });
 
   it('should decrement by one after click play and wait one second', async () => {
-    render(<Count />);
-
-    const seconds = screen.getByLabelText('seconds');
+    act(() => {
+      render(<Count />);
+    });
 
     const playButton = screen.getByRole('button', {
       name: /play/i
     });
-
-    act(() => {
+    await act(async () => {
       userEvent.click(playButton);
+      await new Promise(r => setTimeout(r, 1000));
     });
 
-    await new Promise(r => setTimeout(r, 1000));
+    // const seconds = await screen.findByAltText('seconds');
+    const seconds = await screen.findByText(59);
 
     expect(seconds).toHaveTextContent(59);
   });
 
   it('should reset to initial value on reset', async () => {
-    render(<Count />);
+    act(() => {
+      render(<Count />);
+    });
 
-    const seconds = screen.getByLabelText('seconds');
-    const minutes = screen.getByLabelText('minutes');
+    const initMinutes = screen.getByLabelText('minutes');
+    const initSeconds = screen.getByLabelText('seconds');
 
-    const initialSeconds = seconds.textContent;
-    const initialMinutes = minutes.textContent;
+    const initialSeconds = initSeconds.textContent;
+    const initialMinutes = initMinutes.textContent;
 
     const playButton = screen.getByRole('button', {
       name: /play/i
     });
 
-    act(() => {
+    await act(async () => {
       userEvent.click(playButton);
+      await new Promise(r => setTimeout(r, 1000));
     });
 
-    await new Promise(r => setTimeout(r, 1000));
+    // const seconds = await screen.findByAltText('seconds');
+    const seconds = await screen.findByText(59);
+    const minutes = await screen.findByLabelText('minutes');
 
     expect(seconds).toHaveTextContent(59);
     expect(minutes).toHaveTextContent(initialMinutes - 1);
