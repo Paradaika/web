@@ -5,7 +5,7 @@ const StyledTaskItem = styled('div')`
   gap: 5px;
 `;
 
-const StyledCheckBox = styled('span')`
+const StyledCheckBox = styled('button')`
   align-self: center;
   aspect-ratio: 1/1;
   background-color: transparent;
@@ -13,6 +13,7 @@ const StyledCheckBox = styled('span')`
   border: 1px solid ${props => props.theme.grey};
   cursor: pointer;
   display: block;
+  padding: 0px;
   height: 12px;
   width: 12px;
   &.done {

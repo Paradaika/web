@@ -14,4 +14,13 @@ describe('Task Item Component', () => {
 
     expect(taskText).toHaveTextContent(TASK_TEST);
   });
+
+  it('should have check button', () => {
+    const TASK_TEST = 'TASK_1';
+    render(<TaskItem id="1" isDone={false} onCheck={() => {}} task={TASK_TEST} />);
+
+    const checkButton = screen.getByRole('button');
+
+    expect(checkButton).toBeInTheDocument();
+  });
 });
