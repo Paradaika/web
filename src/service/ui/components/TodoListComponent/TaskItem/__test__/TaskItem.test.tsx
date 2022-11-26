@@ -1,5 +1,8 @@
 import { render, screen } from '@testing-library/react';
+
 import { TaskItem } from '../TaskItem';
+
+import { themes } from 'domain/styles/themes';
 
 describe('Task Item Component', () => {
   it('should render TaskItemComponent', () => {});
@@ -22,5 +25,15 @@ describe('Task Item Component', () => {
     const checkButton = screen.getByRole('button');
 
     expect(checkButton).toBeInTheDocument();
+  });
+
+  it('should have yellow color on done task buttons', () => {
+    const TASK_TEST = 'TASK_1';
+    const expectedStyles = `backgroundColor: ${themes.defaultTheme}`;
+    render(<TaskItem id="1" isDone={true} onCheck={() => {}} task={TASK_TEST} />);
+
+    const checkButton = screen.getByRole('button');
+
+    expect(checkButton).toHaveStyle(expectedStyles);
   });
 });
