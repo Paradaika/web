@@ -36,4 +36,14 @@ describe('Task Item Component', () => {
 
     expect(checkButton).toHaveStyle(expectedStyles);
   });
+
+  it('should line the text on done', () => {
+    const TASK_TEST = 'TASK_1';
+    const expectedStyles = `text-decoration: line-through`;
+    render(<TaskItem id="1" isDone={true} onCheck={() => {}} task={TASK_TEST} />);
+
+    const checkButton = screen.getByText(TASK_TEST);
+
+    expect(checkButton).toHaveStyle(expectedStyles);
+  });
 });
