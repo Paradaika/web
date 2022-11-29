@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
-import { ITask } from '../TodoListComponent';
-import { TodoInputStyles } from './TodoInput.styles';
-
+import { useRef } from 'react';
 import { v4 as uuidGenerator } from 'uuid';
 
+import { ITask } from 'domain/interfaces/ITask';
+
+import { TodoInputStyles } from './TodoInput.styles';
 interface Props {
   onAdd: (task: ITask) => void;
 }
