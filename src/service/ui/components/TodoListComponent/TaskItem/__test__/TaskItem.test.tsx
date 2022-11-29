@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { TaskItem } from '../TaskItem';
 
 import { themes } from 'domain/styles/themes';
+import userEvent from '@testing-library/user-event';
 
 describe('Task Item Component', () => {
   it('should render TaskItemComponent', () => {});
@@ -45,5 +46,19 @@ describe('Task Item Component', () => {
     const checkButton = screen.getByText(TASK_TEST);
 
     expect(checkButton).toHaveStyle(expectedStyles);
+  });
+
+  it('should call onCheck when checking', () => {
+    const TASK_TEST = 'TASK_1';
+    let isDone = false;
+    const mockCheck = jest.fn(() => {
+      isDone = !isDone;
+    });
+    render(<TaskItem id="1" isDone={isDone} onCheck={mockCheck} task={TASK_TEST} />);
+
+    const checkButton = screen.getByRole('button');
+    userEvent.click(checkButton);
+
+    expect(mockCheck).toHaveBeenCalled();
   });
 });
