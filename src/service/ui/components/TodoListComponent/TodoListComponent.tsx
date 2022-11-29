@@ -16,9 +16,11 @@ export const TodoListComponent = () => {
       <TodoListComponentStyles.TodoListComponentContainer>
         <TodoListComponentStyles.TodoListHeader>Todo List</TodoListComponentStyles.TodoListHeader>
         <TodoInput onAdd={appendTask} />
-        {todoList.map(task => {
-          return <TaskItem id={task.id} isDone={task.isDone} key={task.id} task={task.task} onCheck={changeTaskDoneStatus} />;
-        })}
+        <TodoListComponentStyles.TaskListContainer>
+          {todoList.map(task => {
+            return <TaskItem id={task.id} isDone={task.isDone} key={task.id} task={task.task} onCheck={changeTaskDoneStatus} />;
+          })}
+        </TodoListComponentStyles.TaskListContainer>
       </TodoListComponentStyles.TodoListComponentContainer>
     </ThemeProvider>
   );

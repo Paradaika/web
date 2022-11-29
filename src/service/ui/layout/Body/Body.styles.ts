@@ -8,6 +8,7 @@ const StyledBody = styled('div')`
 
 const StyledCountContainer = styled('div')`
   display: flex;
+  width: 30vw;
   flex-direction: column;
   justify-content: center;
 `;

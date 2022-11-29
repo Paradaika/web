@@ -7,7 +7,7 @@ interface Props {
 
 const TodoListComponentContainer = styled('div')<Props>`
   display: flex;
-  flex: 0.5;
+  flex: 0.3;
   flex-direction: column;
   background-color: ${props => props.theme.glassBackgroundColor};
   border: 1px solid ${props => props.theme.glassBorderColor};
@@ -22,4 +22,10 @@ const TodoListHeader = styled('h2')`
   background-color: ${props => props.theme.glassBackgroundColorDark};
 `;
 
-export const TodoListComponentStyles = { TodoListComponentContainer, TodoListHeader };
+const TaskListContainer = styled('div')`
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+`;
+
+export const TodoListComponentStyles = { TaskListContainer, TodoListComponentContainer, TodoListHeader };

@@ -5,4 +5,8 @@ const StyledTimer = styled('div')`
   gap: 1rem;
 `;
 
-export const Styles = { StyledTimer };
+const StyledCountNumbers = styled('p')`
+  font-size: 1.8rem;
+`;
+
+export const Styles = { StyledCountNumbers, StyledTimer };

@@ -20,7 +20,7 @@ export const Count = () => {
     <ThemeProvider theme={theme}>
       <CountStyles.StyledCount counterPercentage={fixedProgressPercentage + '%'}>
         <Timer time={time} />
-        <div>
+        <CountStyles.StyledButtonContainer>
           {isPaused ? (
             <ButtonStyles.StyledButtonSuccess name="play" onClick={playHandler}>
               Play
@@ -33,7 +33,7 @@ export const Count = () => {
           <ButtonStyles.StyledButton disabled={!isPaused} name="reset" onClick={resetHandler}>
             Reset
           </ButtonStyles.StyledButton>
-        </div>
+        </CountStyles.StyledButtonContainer>
       </CountStyles.StyledCount>
     </ThemeProvider>
   );

@@ -7,13 +7,13 @@ interface Props {
 export const Timer = ({ time }: Props) => {
   return (
     <Styles.StyledTimer aria-label="count" style={{ display: 'flex' }}>
-      <p aria-label="minutes" className="minutes">
+      <Styles.StyledCountNumbers aria-label="minutes" className="minutes">
         {time.getMinutes()}
-      </p>
-      <p>:</p>
-      <p aria-label="seconds" className="seconds">
+      </Styles.StyledCountNumbers>
+      <Styles.StyledCountNumbers>:</Styles.StyledCountNumbers>
+      <Styles.StyledCountNumbers aria-label="seconds" className="seconds">
         {time.getSeconds()}
-      </p>
+      </Styles.StyledCountNumbers>
     </Styles.StyledTimer>
   );
 };

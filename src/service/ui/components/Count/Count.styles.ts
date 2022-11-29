@@ -17,7 +17,12 @@ const StyledCount = styled('div')<Props>`
   flex-direction: column;
   padding: 2rem;
   place-items: center;
-  width: fit-content;
+  width: 100%;
 `;
 
-export const Styles = { StyledCount };
+const StyledButtonContainer = styled('div')`
+  display: flex;
+  gap: 5;
+`;
+
+export const Styles = { StyledButtonContainer, StyledCount };
