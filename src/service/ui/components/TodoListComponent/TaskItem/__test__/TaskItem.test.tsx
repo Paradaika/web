@@ -6,8 +6,9 @@ import { themes } from 'domain/styles/themes';
 import userEvent from '@testing-library/user-event';
 
 describe('Task Item Component', () => {
-  it('should render TaskItemComponent', () => {});
-  render(<TaskItem id="1" isDone={false} onCheck={() => {}} task={'Dummy Task'} />);
+  it('should render TaskItemComponent', () => {
+    render(<TaskItem id="1" isDone={false} onCheck={() => {}} task={'Dummy Task'} />);
+  });
 
   it('should render entered task text', () => {
     const TASK_TEST = 'TASK_1';

@@ -8,12 +8,18 @@ import TaskItem from 'service/ui/components/TodoListComponent/TaskItem';
 import TodoInput from 'service/ui/components/TodoListComponent/TodoInput';
 
 import { TodoListComponentStyles } from './TodoListComponent.styles';
+import { useState } from 'react';
 
 export const TodoListComponent = () => {
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const { appendTask, changeTaskDoneStatus, todoList } = useTodoListComponent();
+
+  const todoListContainerDisplayHandler = () => {
+    setIsCollapsed(prev => !prev);
+  };
   return (
     <ThemeProvider theme={themes.defaultTheme}>
-      <TodoListComponentStyles.TodoListComponentContainer>
+      <TodoListComponentStyles.TodoListComponentContainer className={`${isCollapsed && 'collapsed'}`} onClick={todoListContainerDisplayHandler}>
         <TodoListComponentStyles.TodoListHeader>Todo List</TodoListComponentStyles.TodoListHeader>
         <TodoInput onAdd={appendTask} />
         <TodoListComponentStyles.TaskListContainer>

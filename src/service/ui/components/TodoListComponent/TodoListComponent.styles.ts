@@ -12,6 +12,12 @@ const TodoListComponentContainer = styled('div')<Props>`
   background-color: ${props => props.theme.glassBackgroundColor};
   border: 1px solid ${props => props.theme.glassBorderColor};
   border-radius: 5px 0px 5px 0px;
+
+  transition: transform 0.7s ease-out;
+
+  &.collapsed {
+    transform: translateX(80%);
+  }
 `;
 
 const TodoListHeader = styled('h2')`

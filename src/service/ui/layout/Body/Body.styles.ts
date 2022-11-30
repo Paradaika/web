@@ -4,6 +4,7 @@ const StyledBody = styled('div')`
   display: flex;
   flex: 1;
   justify-content: space-between;
+  overflow: hidden;
 `;
 
 const StyledCountContainer = styled('div')`
