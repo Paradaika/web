@@ -4,6 +4,7 @@ import { TaskItem } from '../TaskItem';
 
 import { themes } from 'domain/styles/themes';
 import userEvent from '@testing-library/user-event';
+import { useState } from 'react';
 
 describe('Task Item Component', () => {
   it('should render TaskItemComponent', () => {
@@ -44,9 +45,9 @@ describe('Task Item Component', () => {
     const expectedStyles = `text-decoration: line-through`;
     render(<TaskItem id="1" isDone={true} onCheck={() => {}} task={TASK_TEST} />);
 
-    const checkButton = screen.getByText(TASK_TEST);
+    const textStyles = screen.getByText(TASK_TEST);
 
-    expect(checkButton).toHaveStyle(expectedStyles);
+    expect(textStyles).toHaveStyle(expectedStyles);
   });
 
   it('should call onCheck when checking', () => {
@@ -58,6 +59,7 @@ describe('Task Item Component', () => {
     render(<TaskItem id="1" isDone={isDone} onCheck={mockCheck} task={TASK_TEST} />);
 
     const checkButton = screen.getByRole('button');
+
     userEvent.click(checkButton);
 
     expect(mockCheck).toHaveBeenCalled();
