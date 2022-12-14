@@ -64,4 +64,22 @@ describe('Task Item Component', () => {
 
     expect(mockCheck).toHaveBeenCalled();
   });
+  // it('should change appearance on check', () => {
+  //   const [isDone, setIsDone] = useState(false);
+  //   const TASK_TEST = 'TASK_1';
+  //   const expectedTextStyles = `text-decoration: line-through`;
+  //   const expectedButtonStyles = `backgroundColor: ${themes.defaultTheme}`;
+
+  //   const mockCheck = jest.fn(() => {
+  //     setIsDone(true);
+  //   });
+  //   render(<TaskItem id="1" isDone={isDone} onCheck={mockCheck} task={TASK_TEST} />);
+
+  //   const checkButton = screen.getByRole('button');
+  //   userEvent.click(checkButton);
+
+  //   const taskText = screen.getByText(TASK_TEST);
+
+  //   expect(taskText).toHaveStyle(expectedTextStyles);
+  // });
 });
