@@ -2,6 +2,15 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { TodoListComponent } from '../TodoListComponent';
 
+beforeEach(() => {
+  render(<TodoListComponent />);
+  const header = screen.getByRole('heading', {
+    name: /todo list/i
+  });
+
+  userEvent.click(header);
+});
+
 describe('Todo List Component', () => {
   it('should render TodoListComponent', () => {
     render(<TodoListComponent />);
