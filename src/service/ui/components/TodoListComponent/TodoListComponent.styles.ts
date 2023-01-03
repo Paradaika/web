@@ -26,12 +26,23 @@ const TodoListHeader = styled('h2')`
   margin: 0;
   padding: 15px 0px 10px;
   background-color: ${props => props.theme.glassBackgroundColorDark};
+  &.collapsed {
+    align-self: flex-start;
+    transform: rotate(90deg) translateX(50%) translateY(70%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
 `;
 
 const TaskListContainer = styled('div')`
   display: flex;
   flex-direction: column;
   padding-left: 10px;
+
+  &.collapsed {
+    visibility: hidden;
+  }
 `;
 
 export const TodoListComponentStyles = { TaskListContainer, TodoListComponentContainer, TodoListHeader };

@@ -19,12 +19,14 @@ export const TodoListComponent = () => {
   };
   return (
     <ThemeProvider theme={themes.defaultTheme}>
-      <TodoListComponentStyles.TodoListComponentContainer className={`${isCollapsed && 'collapsed'}`} onClick={todoListContainerDisplayHandler}>
-        <TodoListComponentStyles.TodoListHeader>Todo List</TodoListComponentStyles.TodoListHeader>
-        <TodoInput onAdd={appendTask} />
-        <TodoListComponentStyles.TaskListContainer>
+      <TodoListComponentStyles.TodoListComponentContainer className={`${isCollapsed && 'collapsed'}`}>
+        <TodoListComponentStyles.TodoListHeader className={`${isCollapsed && 'collapsed'}`} onClick={todoListContainerDisplayHandler}>
+          Todo List
+        </TodoListComponentStyles.TodoListHeader>
+        <TodoListComponentStyles.TaskListContainer className={`${isCollapsed && 'collapsed'}`}>
+          <TodoInput onAdd={appendTask} />
           {todoList.map(task => {
-            return <TaskItem id={task.id} isDone={task.isDone} key={task.id} task={task.task} onCheck={changeTaskDoneStatus} />;
+            return <TaskItem id={task.id} isDone={task.isDone} key={task.id} onCheck={changeTaskDoneStatus} task={task.task} />;
           })}
         </TodoListComponentStyles.TaskListContainer>
       </TodoListComponentStyles.TodoListComponentContainer>
