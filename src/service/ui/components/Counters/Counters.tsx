@@ -14,7 +14,7 @@ export const Counters = () => {
   return (
     <ThemeProvider theme={themes.defaultTheme}>
       <CountersComponentStyles.CountersComponentContainer className={`${isCollapsed && 'collapsed'}`}>
-        <CountersComponentStyles.CountersHeader onClick={todoListContainerDisplayHandler} className={`${isCollapsed && 'collapsed'}`}>
+        <CountersComponentStyles.CountersHeader className={`${isCollapsed && 'collapsed'}`} onClick={todoListContainerDisplayHandler}>
           Counters
         </CountersComponentStyles.CountersHeader>
         <CountersComponentStyles.CountersContainer>
