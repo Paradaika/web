@@ -4,7 +4,6 @@ import { TaskItem } from '../TaskItem';
 
 import { themes } from 'domain/styles/themes';
 import userEvent from '@testing-library/user-event';
-import { useState } from 'react';
 
 describe('Task Item Component', () => {
   it('should render TaskItemComponent', () => {
