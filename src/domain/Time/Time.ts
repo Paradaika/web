@@ -9,7 +9,10 @@ export class Time {
    */
   public getMinutes() {
     const rawMinutes = this.rawSeconds / 60;
-    const formattedMinutes = rawMinutes.toString().split('.')[0];
+    let formattedMinutes = rawMinutes.toString().split('.')[0];
+    if (rawMinutes === 60) {
+      formattedMinutes = '0';
+    }
     return formattedMinutes;
   }
 
@@ -19,5 +22,14 @@ export class Time {
   public getSeconds() {
     const rawSeconds = (this.rawSeconds % 60).toFixed(0);
     return rawSeconds.toString();
+  }
+
+  /**
+   * getHours
+   */
+  public getHours() {
+    const rawHours = this.rawSeconds / 3600;
+    const formattedHours = rawHours.toString().split('.')[0];
+    return formattedHours;
   }
 }
