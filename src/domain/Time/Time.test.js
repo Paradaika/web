@@ -16,4 +16,12 @@ describe('Time', () => {
     expect(time.getMinutes()).toBe('25');
     expect(time.getSeconds()).toBe('0');
   });
+
+  it('should convert 3600 s in one hour', () => {
+    const time = new Time(3600);
+
+    expect(time.getHours()).toBe('1');
+    expect(time.getMinutes()).toBe('0');
+    expect(time.getSeconds()).toBe('0');
+  });
 });
