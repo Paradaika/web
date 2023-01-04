@@ -4,6 +4,7 @@ import { themes } from 'domain/styles/themes';
 
 import { CountersComponentStyles } from './Counters.styles';
 import { useState } from 'react';
+import TimeTrackerComponent from './TimeTrackerComponent';
 
 export const Counters = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -18,7 +19,7 @@ export const Counters = () => {
           Counters
         </CountersComponentStyles.CountersHeader>
         <CountersComponentStyles.CountersContainer>
-          <p>Counter 1</p>
+          <TimeTrackerComponent />
           <p>Counter 2</p>
         </CountersComponentStyles.CountersContainer>
       </CountersComponentStyles.CountersComponentContainer>
