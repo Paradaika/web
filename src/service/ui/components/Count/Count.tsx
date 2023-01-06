@@ -5,7 +5,7 @@ import { useCount } from './useCount';
 import { Time } from 'domain/Time/Time';
 
 import { ThemeProvider } from 'styled-components';
-import { Styles as ButtonStyles } from '../Button/Button.styles';
+import { ButtonStyles } from '../Button/Button.styles';
 import { Styles as CountStyles } from './Count.styles';
 import { themes } from 'domain/styles/themes';
 
