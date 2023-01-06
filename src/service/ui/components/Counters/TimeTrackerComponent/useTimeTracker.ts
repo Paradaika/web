@@ -29,7 +29,7 @@ export const useTimeTracker = () => {
 
   const countDownHandler = useCallback(() => {
     if (!isPaused) countAdd();
-  }, [count, isPaused]);
+  }, [isPaused]);
 
   useEffect(() => {
     setTimeout(() => countDownHandler(), 10);
