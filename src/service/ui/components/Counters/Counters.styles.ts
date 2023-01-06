@@ -38,7 +38,8 @@ const CountersHeader = styled('h2')`
 const CountersContainer = styled('div')`
   display: flex;
   flex-direction: column;
-  padding-left: 10px;
+  padding-left: 15px;
+  padding-top: 20px;
 `;
 
 export const CountersComponentStyles = { CountersComponentContainer, CountersContainer, CountersHeader };
