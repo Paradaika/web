@@ -19,8 +19,7 @@ export const Counters = () => {
           Counters
         </CountersComponentStyles.CountersHeader>
         <CountersComponentStyles.CountersContainer>
-          <TimeTrackerComponent />
-          <p>Counter 2</p>
+          <TimeTrackerComponent counterName="Maths" />
         </CountersComponentStyles.CountersContainer>
       </CountersComponentStyles.CountersComponentContainer>
     </ThemeProvider>
