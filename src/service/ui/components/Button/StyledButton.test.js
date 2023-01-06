@@ -1,4 +1,4 @@
-import { Styles } from './Button.styles';
+import { ButtonStyles } from './Button.styles';
 
 import { themes } from 'domain/styles/themes';
 
@@ -6,12 +6,12 @@ import { render, screen } from '@testing-library/react';
 
 describe('Styled buttons', () => {
   it('should render styled button', () => {
-    render(<Styles.StyledButton></Styles.StyledButton>);
+    render(<ButtonStyles.StyledButton></ButtonStyles.StyledButton>);
   });
 
   it('should have default color main (orangish)', () => {
     const BUTTON_TEXT = 'My Button';
-    render(<Styles.StyledButton theme={themes.defaultTheme}>{BUTTON_TEXT}</Styles.StyledButton>);
+    render(<ButtonStyles.StyledButton theme={themes.defaultTheme}>{BUTTON_TEXT}</ButtonStyles.StyledButton>);
 
     const button = screen.getByRole('button');
 
@@ -21,9 +21,9 @@ describe('Styled buttons', () => {
   it('should render a grey button on disabled', () => {
     const BUTTON_TEXT = 'My Button';
     render(
-      <Styles.StyledButton disabled theme={themes.defaultTheme}>
+      <ButtonStyles.StyledButton disabled theme={themes.defaultTheme}>
         {BUTTON_TEXT}
-      </Styles.StyledButton>
+      </ButtonStyles.StyledButton>
     );
 
     const disabledButton = screen.getByRole('button');
