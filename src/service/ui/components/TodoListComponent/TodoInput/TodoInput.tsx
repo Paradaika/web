@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import { v4 as uuidGenerator } from 'uuid';
 
 import { ITask } from 'domain/interfaces/ITask';
 
@@ -17,7 +16,7 @@ export const TodoInput = ({ onAdd, className }: Props) => {
     event.preventDefault();
 
     const task: ITask = {
-      id: uuidGenerator(),
+      id: crypto.randomUUID(),
       isDone: false,
       task: todoInputRef.current?.value || ''
     };
