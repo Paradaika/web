@@ -28,6 +28,16 @@ describe('Todo List Component', () => {
     const INPUT_TEXT = 'Task_1';
     const inputComponent = screen.getByRole('textbox');
 
+    // crypto.randomUUID = jest.fn(() => {
+    //   return '123456';
+    // });
+
+    global.crypto = {
+      randomUUID: function () {
+        return '1234';
+      }
+    };
+
     userEvent.type(inputComponent, INPUT_TEXT);
     userEvent.type(inputComponent, '{enter}');
 
