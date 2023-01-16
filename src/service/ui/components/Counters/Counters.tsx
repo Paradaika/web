@@ -3,14 +3,44 @@ import { ThemeProvider } from 'styled-components';
 import { themes } from 'domain/styles/themes';
 
 import { CountersComponentStyles } from './Counters.styles';
-import { useState } from 'react';
+import { FormEvent, useRef, useState } from 'react';
 import TimeTrackerComponent from './TimeTrackerComponent';
+
+type TimeTrackerId = string;
+interface ITimeTracker {
+  name: string;
+  id: TimeTrackerId;
+}
 
 export const Counters = () => {
   const [isCollapsed, setIsCollapsed] = useState(true);
+  const [timeTrackers, setTimeTrackers] = useState<ITimeTracker[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const addTimeTracker = (timeTracker: ITimeTracker) => {
+    setTimeTrackers(prevTimeTrackers => [...prevTimeTrackers, timeTracker]);
+  };
+
+  const deleteTimeTracker = (timeTrackerId: TimeTrackerId) => {
+    setTimeTrackers(prevTimeTrackers => {
+      return prevTimeTrackers.filter(timeTracker => timeTracker.id !== timeTrackerId);
+    });
+  };
 
   const todoListContainerDisplayHandler = () => {
     setIsCollapsed(prev => !prev);
+  };
+
+  const onTimeTrackerSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const newTimeTracker: ITimeTracker = {
+      id: crypto.randomUUID(),
+      name: inputRef.current?.value || ''
+    };
+    addTimeTracker(newTimeTracker);
+    formRef.current?.reset();
   };
   return (
     <ThemeProvider theme={themes.defaultTheme}>
@@ -19,7 +49,12 @@ export const Counters = () => {
           Counters
         </CountersComponentStyles.CountersHeader>
         <CountersComponentStyles.CountersContainer>
-          <TimeTrackerComponent counterName="Maths" />
+          <form onSubmit={onTimeTrackerSubmit} ref={formRef}>
+            <input ref={inputRef} />
+          </form>
+          {timeTrackers.map(timeTracker => (
+            <TimeTrackerComponent counterName={timeTracker.name} key={timeTracker.id} />
+          ))}
         </CountersComponentStyles.CountersContainer>
       </CountersComponentStyles.CountersComponentContainer>
     </ThemeProvider>
