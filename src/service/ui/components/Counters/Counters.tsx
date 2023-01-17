@@ -5,8 +5,9 @@ import { themes } from 'domain/styles/themes';
 import { CountersComponentStyles } from './Counters.styles';
 import { FormEvent, useRef, useState } from 'react';
 import TimeTrackerComponent from './TimeTrackerComponent';
+import { TypeOfExpression } from 'typescript';
 
-type TimeTrackerId = string;
+export type TimeTrackerId = string;
 interface ITimeTracker {
   name: string;
   id: TimeTrackerId;
@@ -48,12 +49,12 @@ export const Counters = () => {
         <CountersComponentStyles.CountersHeader className={`${isCollapsed && 'collapsed'}`} onClick={todoListContainerDisplayHandler}>
           Counters
         </CountersComponentStyles.CountersHeader>
+        <CountersComponentStyles.CountersForm onSubmit={onTimeTrackerSubmit} ref={formRef}>
+          <input className="timeTrackerInput" ref={inputRef} />
+        </CountersComponentStyles.CountersForm>
         <CountersComponentStyles.CountersContainer>
-          <form onSubmit={onTimeTrackerSubmit} ref={formRef}>
-            <input ref={inputRef} />
-          </form>
           {timeTrackers.map(timeTracker => (
-            <TimeTrackerComponent counterName={timeTracker.name} key={timeTracker.id} />
+            <TimeTrackerComponent counterName={timeTracker.name} id={timeTracker.id} onDelete={deleteTimeTracker} key={timeTracker.id} />
           ))}
         </CountersComponentStyles.CountersContainer>
       </CountersComponentStyles.CountersComponentContainer>
