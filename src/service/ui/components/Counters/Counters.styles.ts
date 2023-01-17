@@ -35,11 +35,20 @@ const CountersHeader = styled('h2')`
   }
 `;
 
+const CountersForm = styled('form')`
+  margin: 5px;
+  margin-bottom: 15px;
+`;
+
 const CountersContainer = styled('div')`
+  &.timeTrackerInput {
+    position: relative;
+  }
   display: flex;
+  gap: 5px;
   flex-direction: column;
   padding-left: 15px;
   padding-top: 20px;
 `;
 
-export const CountersComponentStyles = { CountersComponentContainer, CountersContainer, CountersHeader };
+export const CountersComponentStyles = { CountersComponentContainer, CountersForm, CountersContainer, CountersHeader };
