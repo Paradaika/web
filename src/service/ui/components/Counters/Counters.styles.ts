@@ -36,7 +36,7 @@ const CountersHeader = styled('h2')`
 `;
 
 const CountersForm = styled('form')`
-  margin: 5px;
+  margin: 1rem;
   margin-bottom: 15px;
 `;
 
