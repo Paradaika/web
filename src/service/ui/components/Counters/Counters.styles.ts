@@ -9,8 +9,8 @@ const CountersComponentContainer = styled('div')<Props>`
   display: flex;
   flex: 0.3;
   flex-direction: column;
-  background-color: ${props => props.theme.glassBackgroundColor};
-  border: 1px solid ${props => props.theme.glassBorderColor};
+  background-color: ${({ theme }) => theme.glassBackgroundColor};
+  border: 1px solid ${({ theme }) => theme.glassBorderColor};
   border-radius: 0px 5px 0px 5px;
 
   transition: transform 0.7s ease-out;
@@ -22,10 +22,10 @@ const CountersComponentContainer = styled('div')<Props>`
 
 const CountersHeader = styled('h2')`
   text-align: center;
-  border-bottom: 1px solid ${props => props.theme.glassBorderColor};
+  border-bottom: 1px solid ${({ theme }) => theme.glassBorderColor};
   margin: 0;
   padding: 15px 0px 10px;
-  background-color: ${props => props.theme.glassBackgroundColorDark};
+  background-color: ${({ theme }) => theme.glassBackgroundColorDark};
 
   &.collapsed {
     align-self: flex-end;
