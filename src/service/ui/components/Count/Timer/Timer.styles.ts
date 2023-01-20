@@ -6,7 +6,8 @@ const StyledTimer = styled('div')`
 `;
 
 const StyledCountNumbers = styled('p')`
-  font-size: 1.8rem;
+  font-size: 2rem;
+  font-weight: 300;
 `;
 
 export const Styles = { StyledCountNumbers, StyledTimer };
