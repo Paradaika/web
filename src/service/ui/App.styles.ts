@@ -9,7 +9,7 @@ interface Props {
 const GlobalStyles = createGlobalStyle<Props>`
 html  {
   background-color: ${props => props.theme.background};
-  color:  ${props => props.theme.main};
+  color:  ${({ theme }) => theme.black};
   margin: 0px;
   padding: 0px;
   min-height: 100%;
@@ -24,6 +24,7 @@ body{
   margin: 0;
   display: flex;
   flex-direction: column;
+  
 
   #root{
     display: flex;
