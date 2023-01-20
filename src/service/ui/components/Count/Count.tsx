@@ -18,7 +18,7 @@ export const Count = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <CountStyles.StyledCount counterPercentage={fixedProgressPercentage + '%'}>
+      <CountStyles.StyledBall>
         <Timer time={time} />
         <CountStyles.StyledButtonContainer>
           {isPaused ? (
@@ -34,7 +34,7 @@ export const Count = () => {
             Reset
           </ButtonStyles.StyledButton>
         </CountStyles.StyledButtonContainer>
-      </CountStyles.StyledCount>
+      </CountStyles.StyledBall>
     </ThemeProvider>
   );
 };
