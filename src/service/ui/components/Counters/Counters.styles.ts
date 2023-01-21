@@ -6,13 +6,13 @@ interface Props {
 }
 
 const CountersComponentContainer = styled('div')<Props>`
-  display: flex;
-  flex: 0.3;
-  flex-direction: column;
-  background-color: ${({ theme }) => theme.glassBackgroundColor};
-  border: 1px solid ${({ theme }) => theme.glassBorderColor};
+  background: linear-gradient(315deg, #cacaca, #f0f0f0);
   border-radius: 0px 5px 0px 5px;
-
+  box-shadow: -26px -26px 53px #bebebe, 26px 26px 53px #ffffff;
+  box-shadow: 26px 26px 53px #bebebe, -26px -26px 53px #ffffff;
+  display: flex;
+  flex-direction: column;
+  flex: 0.3;
   transition: transform 0.7s ease-out;
 
   &.collapsed {
@@ -22,10 +22,8 @@ const CountersComponentContainer = styled('div')<Props>`
 
 const CountersHeader = styled('h2')`
   text-align: center;
-  border-bottom: 1px solid ${({ theme }) => theme.glassBorderColor};
   margin: 0;
   padding: 15px 0px 10px;
-  background-color: ${({ theme }) => theme.glassBackgroundColorDark};
 
   &.collapsed {
     align-self: flex-end;

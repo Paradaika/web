@@ -48,10 +48,10 @@ form{
 input {
   height: 24px;
   border-radius: 10px;
-  border: 3px solid rgba(255, 255, 255, 0.38);
+  border: 3px solid #cacaca;
   background-color: rgba(255, 255, 255, 0.95);
   background-color: transparent;
-  color: white;
+  color: black;
   position: absolute;
 }
 
