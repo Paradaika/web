@@ -26,13 +26,13 @@ export const Count = () => {
               Play
             </ButtonStyles.StyledButtonSuccess>
           ) : (
-            <ButtonStyles.StyledButtonError name="pause" onClick={pauseHandler}>
+            <ButtonStyles.StyledButton name="pause" onClick={pauseHandler}>
               Pause
-            </ButtonStyles.StyledButtonError>
+            </ButtonStyles.StyledButton>
           )}
-          <ButtonStyles.StyledButton disabled={!isPaused} name="reset" onClick={resetHandler}>
+          <ButtonStyles.StyledButtonError disabled={!isPaused} name="reset" onClick={resetHandler}>
             Reset
-          </ButtonStyles.StyledButton>
+          </ButtonStyles.StyledButtonError>
         </CountStyles.StyledButtonContainer>
       </CountStyles.StyledBall>
     </ThemeProvider>
