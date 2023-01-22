@@ -10,12 +10,16 @@ const StyledButton = styled('button')<Props>`
   background-color: transparent;
   color: ${props => props.theme.main};
   font-family: 'Roboto Mono', monospace;
-  padding: 0.5rem;
+  padding: 1rem 1.5rem;
   margin: 0.5rem;
   border-radius: 5px;
   box-shadow: 30 40 50;
-  border: 1px solid;
+  border: 2px solid;
+  box-shadow: -5px 5px 10px #8f8f8f, 5px -5px 10px #ffffff;
 
+  background: linear-gradient(225deg, #cacaca, #f0f0f0);
+  font-weight: 500;
+  border: none;
   :disabled {
     color: #6a676c;
   }
