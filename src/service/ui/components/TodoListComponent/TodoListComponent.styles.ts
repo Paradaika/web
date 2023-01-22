@@ -9,12 +9,13 @@ const TodoListComponentContainer = styled('div')<Props>`
   display: flex;
   flex: 0.3;
   flex-direction: column;
-  background-color: ${props => props.theme.glassBackgroundColor};
-  border: 1px solid ${props => props.theme.glassBorderColor};
   border-radius: 5px 0px 5px 0px;
 
   transition: transform 0.7s ease-out;
 
+  background: #e0e0e0;
+  background: #e0e0e0;
+  box-shadow: -26px 26px 53px #bebebe, 26px -26px 53px #ffffff;
   &.collapsed {
     transform: translateX(80%);
   }
@@ -22,10 +23,8 @@ const TodoListComponentContainer = styled('div')<Props>`
 
 const TodoListHeader = styled('h2')`
   text-align: center;
-  border-bottom: 1px solid ${props => props.theme.glassBorderColor};
   margin: 0;
   padding: 15px 0px 10px;
-  background-color: ${props => props.theme.glassBackgroundColorDark};
   &.collapsed {
     align-self: flex-start;
     transform: rotate(90deg) translateX(50%) translateY(70%);
