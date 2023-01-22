@@ -8,7 +8,6 @@ interface Props {
 const CountersComponentContainer = styled('div')<Props>`
   background: linear-gradient(315deg, #cacaca, #f0f0f0);
   border-radius: 0px 5px 0px 5px;
-  box-shadow: -26px -26px 53px #bebebe, 26px 26px 53px #ffffff;
   box-shadow: 26px 26px 53px #bebebe, -26px -26px 53px #ffffff;
   display: flex;
   flex-direction: column;
