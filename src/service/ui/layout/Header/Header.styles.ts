@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const StyledHeader = styled.div`
   padding: 0rem 2rem;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 
   h1 {
     font-size: 5rem;
