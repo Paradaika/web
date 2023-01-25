@@ -5,7 +5,6 @@ import { themes } from 'domain/styles/themes';
 import { CountersComponentStyles } from './Counters.styles';
 import { FormEvent, useRef, useState } from 'react';
 import TimeTrackerComponent from './TimeTrackerComponent';
-import { TypeOfExpression } from 'typescript';
 
 export type TimeTrackerId = string;
 interface ITimeTracker {
@@ -54,7 +53,7 @@ export const Counters = () => {
         </CountersComponentStyles.CountersForm>
         <CountersComponentStyles.CountersContainer>
           {timeTrackers.map(timeTracker => (
-            <TimeTrackerComponent counterName={timeTracker.name} id={timeTracker.id} onDelete={deleteTimeTracker} key={timeTracker.id} />
+            <TimeTrackerComponent counterName={timeTracker.name} id={timeTracker.id} key={timeTracker.id} onDelete={deleteTimeTracker} />
           ))}
         </CountersComponentStyles.CountersContainer>
       </CountersComponentStyles.CountersComponentContainer>
