@@ -34,6 +34,25 @@ const StyledCount = styled('div')<Props>`
 const StyledButtonContainer = styled('div')`
   display: flex;
   gap: 5;
+
+  .icon-container {
+    color: #030303;
+    padding: 5px;
+    height: 3rem;
+  }
 `;
 
-export const Styles = { StyledBall, StyledButtonContainer, StyledCount };
+const IconsContainer = styled('button')`
+  width: 4rem;
+  height: 2rem;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Styles = { StyledBall, StyledButtonContainer, StyledCount, IconsContainer };

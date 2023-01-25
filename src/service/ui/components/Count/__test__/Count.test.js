@@ -10,9 +10,7 @@ describe('Count', () => {
   it('should be a play button', () => {
     render(<Count />);
 
-    const playButton = screen.getByRole('button', {
-      name: /play/i
-    });
+    const playButton = screen.getByTestId('play-button');
 
     expect(playButton).toBeInTheDocument();
   });
@@ -22,17 +20,13 @@ describe('Count', () => {
       render(<Count />);
     });
 
-    const playButton = screen.getByRole('button', {
-      name: /play/i
-    });
+    const playButton = screen.getByTestId('play-button');
 
     act(() => {
       userEvent.click(playButton);
     });
 
-    const pauseButton = screen.getByRole('button', {
-      name: /pause/i
-    });
+    const pauseButton = screen.getByTestId('pause-button');
 
     expect(pauseButton).toBeInTheDocument();
   });
@@ -40,9 +34,7 @@ describe('Count', () => {
   it('should be a reset button', () => {
     render(<Count />);
 
-    const resetButton = screen.getByRole('button', {
-      name: /reset/i
-    });
+    const resetButton = screen.getByTestId('reset-button');
 
     expect(resetButton).toBeInTheDocument();
   });
@@ -68,9 +60,8 @@ describe('Count', () => {
       render(<Count />);
     });
 
-    const playButton = screen.getByRole('button', {
-      name: /play/i
-    });
+    const playButton = screen.getByTestId('play-button');
+
     await act(async () => {
       userEvent.click(playButton);
       await new Promise(r => setTimeout(r, 1000));
@@ -93,9 +84,7 @@ describe('Count', () => {
     const initialSeconds = initSeconds.textContent;
     const initialMinutes = initMinutes.textContent;
 
-    const playButton = screen.getByRole('button', {
-      name: /play/i
-    });
+    const playButton = screen.getByTestId('play-button');
 
     await act(async () => {
       userEvent.click(playButton);
@@ -109,17 +98,13 @@ describe('Count', () => {
     expect(seconds).toHaveTextContent(59);
     expect(minutes).toHaveTextContent(initialMinutes - 1);
 
-    const pauseButton = screen.getByRole('button', {
-      name: /pause/i
-    });
+    const pauseButton = screen.getByTestId('pause-button');
 
     act(() => {
       userEvent.click(pauseButton);
     });
 
-    const resetButton = screen.getByRole('button', {
-      name: /reset/i
-    });
+    const resetButton = screen.getByTestId('reset-button');
 
     act(() => {
       userEvent.click(resetButton);

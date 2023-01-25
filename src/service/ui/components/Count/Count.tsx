@@ -9,8 +9,10 @@ import { ButtonStyles } from '../Button/Button.styles';
 import { Styles as CountStyles } from './Count.styles';
 import { themes } from 'domain/styles/themes';
 
+import { BsPlay, BsArrowCounterclockwise, BsPause } from 'react-icons/bs';
+
 export const Count = () => {
-  const { pauseHandler, playHandler, resetHandler, isPaused, count, fixedProgressPercentage } = useCount();
+  const { pauseHandler, playHandler, resetHandler, isPaused, count } = useCount();
 
   const time = new Time(count / 100);
 
@@ -22,16 +24,21 @@ export const Count = () => {
         <Timer time={time} />
         <CountStyles.StyledButtonContainer>
           {isPaused ? (
-            <ButtonStyles.StyledButtonSuccess name="play" onClick={playHandler}>
-              Play
+            <ButtonStyles.StyledButtonSuccess className="icon-container" data-testid="play-button" name="play" onClick={playHandler}>
+              <BsPlay style={{ height: '100%', width: '100%' }} />
             </ButtonStyles.StyledButtonSuccess>
           ) : (
-            <ButtonStyles.StyledButton name="pause" onClick={pauseHandler}>
-              Pause
+            <ButtonStyles.StyledButton className="icon-container" data-testid="pause-button" name="pause" onClick={pauseHandler}>
+              <BsPause style={{ height: '100%', width: '100%' }} />
             </ButtonStyles.StyledButton>
           )}
-          <ButtonStyles.StyledButtonError disabled={!isPaused} name="reset" onClick={resetHandler}>
-            Reset
+          <ButtonStyles.StyledButtonError
+            className="icon-container"
+            data-testid="reset-button"
+            disabled={!isPaused}
+            name="reset"
+            onClick={resetHandler}>
+            <BsArrowCounterclockwise style={{ height: '100%', width: '100%' }} />
           </ButtonStyles.StyledButtonError>
         </CountStyles.StyledButtonContainer>
       </CountStyles.StyledBall>
