@@ -16,6 +16,9 @@ const TimeTrackerLabelContainer = styled('div')`
   p {
     margin: 0;
   }
+  .counter-button {
+    padding: 0.5rem 0.7rem;
+  }
 `;
 
 export const TimeTrackerStyles = { TimeTrackerContainer, TimeTrackerLabelContainer };

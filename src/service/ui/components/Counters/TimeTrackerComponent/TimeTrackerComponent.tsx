@@ -25,12 +25,18 @@ export const TimeTrackerComponent = ({ counterName, onDelete, id }: Props) => {
         </p>
         <p>
           {isPaused ? (
-            <ButtonStyles.StyledButtonSuccess onClick={playHandler}>Play</ButtonStyles.StyledButtonSuccess>
+            <ButtonStyles.StyledButtonSuccess className="counter-button" onClick={playHandler}>
+              Play
+            </ButtonStyles.StyledButtonSuccess>
           ) : (
-            <ButtonStyles.StyledButton onClick={pauseHandler}>Pause</ButtonStyles.StyledButton>
+            <ButtonStyles.StyledButton className="counter-button" onClick={pauseHandler}>
+              Pause
+            </ButtonStyles.StyledButton>
           )}
         </p>
-        <ButtonStyles.StyledButtonError onClick={deleteHandler}>Delete</ButtonStyles.StyledButtonError>
+        <ButtonStyles.StyledButtonError className="counter-button" onClick={deleteHandler}>
+          Delete
+        </ButtonStyles.StyledButtonError>
       </TimeTrackerStyles.TimeTrackerContainer>
     </TimeTrackerStyles.TimeTrackerLabelContainer>
   );
