@@ -37,7 +37,8 @@ export const Count = () => {
             data-testid="reset-button"
             disabled={!isPaused}
             name="reset"
-            onClick={resetHandler}>
+            onClick={resetHandler}
+          >
             <BsArrowCounterclockwise style={{ height: '100%', width: '100%' }} />
           </ButtonStyles.StyledButtonError>
         </CountStyles.StyledButtonContainer>
