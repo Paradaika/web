@@ -17,6 +17,7 @@ html  {
   font-weight: 200;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
  
 body{
