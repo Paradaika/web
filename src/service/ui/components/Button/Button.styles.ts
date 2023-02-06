@@ -43,4 +43,8 @@ const StyledButtonError = styled(StyledButton)`
   color: ${props => props.theme.error};
 `;
 
-export const ButtonStyles = { StyledButton, StyledButtonSuccess, StyledButtonError };
+const StyledButtonBlack = styled(StyledButton)`
+  color: #020202;
+`;
+
+export const ButtonStyles = { StyledButton, StyledButtonBlack, StyledButtonError, StyledButtonSuccess };
