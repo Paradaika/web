@@ -13,7 +13,11 @@ const keepNumberInRange = (number: number, max: number, min: number) => {
   return number;
 };
 
-export const TimerSettings = () => {
+interface IProps {
+  onCloseModal: () => void;
+}
+
+export const TimerSettings = ({ onCloseModal }: IProps) => {
   const [workTime, setWorkTime] = useState(25);
   const [shortRest, setShotRest] = useState(5);
   const [longRest, setLongRest] = useState(20);
@@ -45,6 +49,7 @@ export const TimerSettings = () => {
     };
 
     window.localStorage.setItem('settings', JSON.stringify(settings));
+    onCloseModal();
   };
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
