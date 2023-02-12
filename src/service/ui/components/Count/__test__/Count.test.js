@@ -1,6 +1,7 @@
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Count } from '../Count';
+import { SettingsContextProvider } from 'service/ui/components/SettingsContext/SettingsContext';
 
 describe('Count', () => {
   it('should render Count component', () => {
@@ -57,7 +58,11 @@ describe('Count', () => {
 
   it('should decrement by one after click play and wait one second', async () => {
     act(() => {
-      render(<Count />);
+      render(
+        <SettingsContextProvider>
+          <Count />
+        </SettingsContextProvider>
+      );
     });
 
     const playButton = screen.getByTestId('play-button');
@@ -75,7 +80,11 @@ describe('Count', () => {
 
   it('should reset to initial value on reset', async () => {
     act(() => {
-      render(<Count />);
+      render(
+        <SettingsContextProvider>
+          <Count />
+        </SettingsContextProvider>
+      );
     });
 
     const initMinutes = screen.getByLabelText('minutes');
