@@ -7,6 +7,7 @@ const StyledTimer = styled('div')`
   box-shadow: inset 20px 20px 60px #bebebe, inset -20px -20px 60px #ffffff;
   border-radius: 50px;
   padding: 0rem 4rem;
+  cursor: pointer;
 `;
 
 const StyledCountNumbers = styled('p')`
