@@ -10,9 +10,18 @@ import { Styles as CountStyles } from './Count.styles';
 import { themes } from 'domain/styles/themes';
 
 import { BsPlay, BsArrowCounterclockwise, BsPause } from 'react-icons/bs';
+import { useContext } from 'react';
+import { SettingsContext } from '../SettingsContext/SettingsContext';
 
-export const Count = () => {
-  const { pauseHandler, playHandler, resetHandler, isPaused, count } = useCount();
+interface IProps {
+  onCountTimeClick: () => void;
+}
+
+export const Count = ({ onCountTimeClick }: IProps) => {
+  const { settings } = useContext(SettingsContext);
+  const workingTimeInitialMilliseconds = settings.workTime * 6000;
+
+  const { pauseHandler, playHandler, resetHandler, isPaused, count } = useCount(workingTimeInitialMilliseconds);
 
   const time = new Time(count / 100);
 
@@ -21,7 +30,7 @@ export const Count = () => {
   return (
     <ThemeProvider theme={theme}>
       <CountStyles.StyledBall>
-        <Timer time={time} />
+        <Timer onClick={onCountTimeClick} time={time} />
         <CountStyles.StyledButtonContainer>
           {isPaused ? (
             <ButtonStyles.StyledButtonSuccess className="icon-container" data-testid="play-button" name="play" onClick={playHandler}>
