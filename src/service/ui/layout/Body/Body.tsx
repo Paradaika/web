@@ -10,7 +10,7 @@ import TimerSettings from '../../components/TimerSettings';
 import { BodyStyles } from './Body.styles';
 
 export const Body = () => {
-  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(true);
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
 
   const openSettingsModalHandler = () => {
     setIsSettingsModalOpen(true);
@@ -28,8 +28,7 @@ export const Body = () => {
             <TimerSettings onCloseModal={closeSettingsModalHandler} />
           </Modal>
         ) : null}
-
-        <Count />
+        <Count onCountTimeClick={openSettingsModalHandler} />
       </BodyStyles.StyledCountContainer>
       <TodoListComponent />
     </BodyStyles.StyledBody>
