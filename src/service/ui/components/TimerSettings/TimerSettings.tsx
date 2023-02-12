@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import { themes } from 'domain/styles/themes';
@@ -6,6 +6,7 @@ import { themes } from 'domain/styles/themes';
 import { ButtonStyles } from '../Button/Button.styles';
 import { TimerSettingsStyles } from './TimerSettings.styles';
 import { ISettings } from '@/domain/interfaces/ISettings';
+import { SettingsContext } from '../SettingsContext/SettingsContext';
 
 const keepNumberInRange = (number: number, max: number, min: number) => {
   if (number >= max) return max;
@@ -18,9 +19,12 @@ interface IProps {
 }
 
 export const TimerSettings = ({ onCloseModal }: IProps) => {
-  const [workTime, setWorkTime] = useState(25);
-  const [shortRest, setShotRest] = useState(5);
-  const [longRest, setLongRest] = useState(20);
+  const { setSettings, settings } = useContext(SettingsContext);
+
+  const localStoreInitialValues = settings;
+  const [workTime, setWorkTime] = useState(() => localStoreInitialValues.workTime);
+  const [shortRest, setShotRest] = useState(() => localStoreInitialValues.shortRest);
+  const [longRest, setLongRest] = useState(() => localStoreInitialValues.longRest);
 
   const workTimeChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = Number(event.target.value);
@@ -42,13 +46,13 @@ export const TimerSettings = ({ onCloseModal }: IProps) => {
   const saveHandler = (event: React.MouseEvent<HTMLButtonElement> | undefined) => {
     event?.preventDefault();
 
-    const settings: ISettings = {
+    const newSettings: ISettings = {
       longRest,
       shortRest,
       workTime
     };
 
-    window.localStorage.setItem('settings', JSON.stringify(settings));
+    setSettings(newSettings);
     onCloseModal();
   };
 
