@@ -5,19 +5,26 @@ import { useCount } from './useCount';
 import { Time } from 'domain/Time/Time';
 
 import { ThemeProvider } from 'styled-components';
-import { ButtonStyles } from '../Button/Button.styles';
+import { ButtonStyles } from 'service/ui/components/Button/Button.styles';
 import { Styles as CountStyles } from './Count.styles';
 import { themes } from 'domain/styles/themes';
 
 import { BsPlay, BsArrowCounterclockwise, BsPause } from 'react-icons/bs';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { SettingsContext } from '../SettingsContext/SettingsContext';
+import Modal from '../Modal/Modal';
+import TimerSettings from '../TimerSettings';
 
-interface IProps {
-  onCountTimeClick: () => void;
-}
+export const Count = () => {
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
 
-export const Count = ({ onCountTimeClick }: IProps) => {
+  const openSettingsModalHandler = () => {
+    setIsSettingsModalOpen(true);
+  };
+
+  const closeSettingsModalHandler = () => {
+    setIsSettingsModalOpen(false);
+  };
   const { settings } = useContext(SettingsContext);
   const workingTimeInitialMilliseconds = settings.workTime * 6000;
 
@@ -30,7 +37,7 @@ export const Count = ({ onCountTimeClick }: IProps) => {
   return (
     <ThemeProvider theme={theme}>
       <CountStyles.StyledBall>
-        <Timer onClick={onCountTimeClick} time={time} />
+        <Timer onClick={openSettingsModalHandler} time={time} />
         <CountStyles.StyledButtonContainer>
           {isPaused ? (
             <ButtonStyles.StyledButtonSuccess className="icon-container" data-testid="play-button" name="play" onClick={playHandler}>
@@ -52,6 +59,11 @@ export const Count = ({ onCountTimeClick }: IProps) => {
           </ButtonStyles.StyledButtonError>
         </CountStyles.StyledButtonContainer>
       </CountStyles.StyledBall>
+      {isSettingsModalOpen ? (
+        <Modal onBackDropsClick={() => {}}>
+          <TimerSettings onCloseModal={closeSettingsModalHandler} />
+        </Modal>
+      ) : null}
     </ThemeProvider>
   );
 };
