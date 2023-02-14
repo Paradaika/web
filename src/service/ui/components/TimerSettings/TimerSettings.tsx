@@ -1,66 +1,18 @@
-import React, { useContext, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import { themes } from 'domain/styles/themes';
 
 import { ButtonStyles } from '../Button/Button.styles';
 import { TimerSettingsStyles } from './TimerSettings.styles';
-import { ISettings } from '@/domain/interfaces/ISettings';
-import { SettingsContext } from '../SettingsContext/SettingsContext';
-
-const keepNumberInRange = (number: number, max: number, min: number) => {
-  if (number >= max) return max;
-  if (number <= min) return min;
-  return number;
-};
+import { useTimerSettings } from './useTimerSettings';
 
 interface IProps {
   onCloseModal: () => void;
 }
 
 export const TimerSettings = ({ onCloseModal }: IProps) => {
-  const { setSettings, settings } = useContext(SettingsContext);
-
-  const localStoreInitialValues = settings;
-  const [workTime, setWorkTime] = useState(() => localStoreInitialValues.workTime);
-  const [shortRest, setShotRest] = useState(() => localStoreInitialValues.shortRest);
-  const [longRest, setLongRest] = useState(() => localStoreInitialValues.longRest);
-
-  const workTimeChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = Number(event.target.value);
-
-    setWorkTime(keepNumberInRange(value, 60, 0));
-  };
-
-  const shortRestChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = Number(event.target.value);
-
-    setShotRest(keepNumberInRange(value, 15, 0));
-  };
-  const longRestChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = Number(event.target.value);
-
-    setLongRest(keepNumberInRange(value, 60, 0));
-  };
-
-  const saveHandler = (event: React.MouseEvent<HTMLButtonElement> | undefined) => {
-    event?.preventDefault();
-
-    const newSettings: ISettings = {
-      longRest,
-      shortRest,
-      workTime
-    };
-
-    setSettings(newSettings);
-    onCloseModal();
-  };
-
-  const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    saveHandler(undefined);
-  };
+  const { longRest, longRestChangeHandler, shortRest, shortRestChangeHandler, submitHandler, workTime, workTimeChangeHandler, saveHandler } =
+    useTimerSettings(onCloseModal);
 
   return (
     <ThemeProvider theme={themes.defaultTheme}>
