@@ -1,10 +1,17 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 
 import { subtract } from 'domain/operations/subtract';
+
+import { countFinishHandler } from 'application/countActions/countFinishHandler';
+import { TimerCyclesContext } from '../TimerCyclesContext/TimerCyclesContext';
 
 export const useCount = (initialMilliseconds: number) => {
   const [isPaused, setIsPaused] = useState(true);
   const [count, setCount] = useState(initialMilliseconds);
+
+  const { addOneCount } = useContext(TimerCyclesContext);
+
+  countFinishHandler({ count, addCount: addOneCount });
 
   const countdown = () => {
     setCount(subtract);
