@@ -14,4 +14,17 @@ describe('Get initial time', () => {
 
     expect(initialTime).toBe(fakeSettings.workTime);
   });
+
+  it('should return short rest on second round', () => {
+    const fakeSettings: ISettings = {
+      longRest: 1,
+      shortRest: 2,
+      workTime: 3
+    };
+    const fakeCount = 1;
+
+    const initialTime = getInitialTime({ settings: fakeSettings, timerCount: fakeCount });
+
+    expect(initialTime).toBe(fakeSettings.shortRest);
+  });
 });
