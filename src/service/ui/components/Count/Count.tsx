@@ -1,19 +1,19 @@
-import { Timer } from './Timer/Timer';
+import { useState } from 'react';
+
+import { BsPlay, BsArrowCounterclockwise, BsPause } from 'react-icons/bs';
+import { ThemeProvider } from 'styled-components';
+
+import { ButtonStyles } from 'service/ui/components/Button/Button.styles';
+import { Timer } from 'service/ui/components/Count/Timer/Timer';
+import Modal from 'service/ui/components/Modal/Modal';
+import TimerSettings from 'service/ui/components/TimerSettings';
 
 import { useCount } from './useCount';
 
+import { themes } from 'domain/styles/themes';
 import { Time } from 'domain/Time/Time';
 
-import { ThemeProvider } from 'styled-components';
-import { ButtonStyles } from 'service/ui/components/Button/Button.styles';
 import { Styles as CountStyles } from './Count.styles';
-import { themes } from 'domain/styles/themes';
-
-import { BsPlay, BsArrowCounterclockwise, BsPause } from 'react-icons/bs';
-import { useContext, useState } from 'react';
-import { SettingsContext } from '../SettingsContext/SettingsContext';
-import Modal from '../Modal/Modal';
-import TimerSettings from '../TimerSettings';
 
 export const Count = () => {
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
@@ -25,10 +25,8 @@ export const Count = () => {
   const closeSettingsModalHandler = () => {
     setIsSettingsModalOpen(false);
   };
-  const { settings } = useContext(SettingsContext);
-  const workingTimeInitialMilliseconds = settings.workTime * 6000;
 
-  const { pauseHandler, playHandler, resetHandler, isPaused, count } = useCount(workingTimeInitialMilliseconds);
+  const { pauseHandler, playHandler, resetHandler, isPaused, count } = useCount();
 
   const time = new Time(count / 100);
 

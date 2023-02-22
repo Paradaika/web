@@ -1,15 +1,31 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 
 import { subtract } from 'domain/operations/subtract';
+import { ISettings } from 'domain/interfaces/ISettings';
 
 import { countFinishHandler } from 'application/countActions/countFinishHandler';
-import { TimerCyclesContext } from '../TimerCyclesContext/TimerCyclesContext';
+import { minutesToMillisecondsConverter } from 'application/utils/minutesToMillisecondsConverter';
 
-export const useCount = (initialMilliseconds: number) => {
+import { TimerCyclesContext } from 'service/ui/components/TimerCyclesContext/TimerCyclesContext';
+import { SettingsContext } from 'service/ui/components/SettingsContext/SettingsContext';
+
+interface IProps {
+  timerCount: number;
+  settings: ISettings;
+}
+const getInitialTime = ({ timerCount, settings }: IProps) => {
+  if (timerCount % 4 === 0) return settings.longRest;
+  if (timerCount % 2 === 0) return settings.workTime;
+  return settings.shortRest;
+};
+
+export const useCount = () => {
+  const { timerCount, addOneCount } = useContext(TimerCyclesContext);
+  const { settings } = useContext(SettingsContext);
+
+  const initialTimeInMilliseconds = minutesToMillisecondsConverter(getInitialTime({ timerCount, settings }));
   const [isPaused, setIsPaused] = useState(true);
-  const [count, setCount] = useState(initialMilliseconds);
-
-  const { addOneCount } = useContext(TimerCyclesContext);
+  const [count, setCount] = useState(initialTimeInMilliseconds);
 
   countFinishHandler({ count, addCount: addOneCount });
 
@@ -26,7 +42,7 @@ export const useCount = (initialMilliseconds: number) => {
   };
 
   const reset = () => {
-    setCount(initialMilliseconds);
+    setCount(initialTimeInMilliseconds);
   };
 
   const resetHandler = () => {
@@ -45,8 +61,8 @@ export const useCount = (initialMilliseconds: number) => {
   }, [count, countDownHandler]);
 
   useEffect(() => {
-    setCount(initialMilliseconds);
-  }, [initialMilliseconds]);
+    setCount(initialTimeInMilliseconds);
+  }, [initialTimeInMilliseconds]);
 
   return { pauseHandler, resetHandler, playHandler, count, isPaused };
 };
