@@ -1,23 +1,13 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 
 import { subtract } from 'domain/operations/subtract';
-import { ISettings } from 'domain/interfaces/ISettings';
 
 import { countFinishHandler } from 'application/countActions/countFinishHandler';
+import { getInitialTime } from 'application/utils/getInitialTime';
 import { minutesToMillisecondsConverter } from 'application/utils/minutesToMillisecondsConverter';
 
 import { TimerCyclesContext } from 'service/ui/components/TimerCyclesContext/TimerCyclesContext';
 import { SettingsContext } from 'service/ui/components/SettingsContext/SettingsContext';
-
-interface IProps {
-  timerCount: number;
-  settings: ISettings;
-}
-const getInitialTime = ({ timerCount, settings }: IProps) => {
-  if (timerCount % 4 === 0) return settings.longRest;
-  if (timerCount % 2 === 0) return settings.workTime;
-  return settings.shortRest;
-};
 
 export const useCount = () => {
   const { timerCount, addOneCount } = useContext(TimerCyclesContext);
