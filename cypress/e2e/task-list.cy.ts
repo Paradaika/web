@@ -25,4 +25,17 @@ describe('Todo List', () => {
 
     cy.contains(todoText);
   });
+
+  it('should complete the task on click ', () => {
+    cy.visit('http://localhost:3000');
+    const todoListHeader = cy.contains(/Todo list/i);
+    const todoText = 'TEST 1';
+
+    todoListHeader.click();
+    cy.get('input[name="todo"]').type(todoText + '{enter}', { force: true });
+    cy.get('.sc-ksBlkl').click();
+
+    //cy.get('.sc-ksBlkl').should('have.color', 'disabled')
+    cy.get('.done');
+  });
 });
