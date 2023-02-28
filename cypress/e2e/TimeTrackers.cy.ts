@@ -12,4 +12,15 @@ describe('template spec', () => {
 
     cy.get('input');
   });
+
+  it('should create a counter ', () => {
+    cy.visit('http://localhost:3000');
+    const counters = cy.contains(/Counters/i);
+    const counter1 = 'COUNTER 1';
+
+    counters.click();
+    cy.get('.timeTrackerInput').type(counter1 + '{enter}', { force: true });
+
+    cy.contains(counter1);
+  });
 });
